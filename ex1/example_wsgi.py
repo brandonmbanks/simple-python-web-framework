@@ -2,9 +2,10 @@
 # start response is a callable which takes:
 #   status:     a string with the status code and readable description
 #   headers:    a list of two tuples containing http headers
+# wsgi applications return iterables that yield bytes
 
 
-def app(eviron, start_response):
+def app(environ, start_response):
     status = '200 OK'
     headers = [('Content-Type', 'text/html; charset=utf8')]
     start_response(status, headers)
