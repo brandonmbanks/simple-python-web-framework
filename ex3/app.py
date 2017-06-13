@@ -5,7 +5,7 @@ from .response import Response
 def request_response_application(function):
     def app(environ, start_response):
         request = Request(environ)
-        response = Response(request)
+        response = function(request)
         start_response(response.status, response.headers.items())
         return iter(response)
     return app

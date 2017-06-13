@@ -5,7 +5,6 @@ from wsgiref.headers import Headers
 class Response:
 
     def __init__(self, response=None, status=200, charset='utf-8', content_type='text/html'):
-        print(response)
         self.response = [] if response is None else response
         self.charset = charset
         self.headers = Headers()
@@ -19,7 +18,6 @@ class Response:
         return f'{self._status} {status_string}'
 
     def __iter__(self):
-        print(dir(self.response))
         for k in self.response:
             if isinstance(k, bytes):
                 yield k
